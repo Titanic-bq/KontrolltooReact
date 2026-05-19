@@ -1,4 +1,5 @@
 import "../index.css";
+import Button from "../components/UI/Button"
 
 const MealItem = (props) => {
   return (
@@ -19,7 +20,7 @@ const MealItem = (props) => {
           <p className="meal-item-description">{props.meal.description}</p>
         </div>
         <p>
-          <button>Add to Cart</button>
+          <Button text="Add to cart"></Button>
         </p>
       </article>
     </li>
