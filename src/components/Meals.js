@@ -1,7 +1,8 @@
-import Mealitem from "./MealItem"
-import PropsTypes from "prop-types"
-import {useState, useEffect} from "react"
- function Meals() {
+import MealItem from "./MealItem";
+import PropsTypes from "prop-types";
+import { useState, useEffect } from "react";
+import "../index.css";
+const Meals = (props) => {
   const [mealsData, setMealsData] = useState(null);
 
   useEffect(() => {
@@ -9,16 +10,18 @@ import {useState, useEffect} from "react"
       .then((response) => response.json())
       .then((data) => setMealsData(data));
   }, []);
-}
+
   console.log(mealsData);
-const Meals = () => {
+  if (mealsData) {
     return (
-        <ul id="meals">
-            { 
-                // list of meals
-            }
-        </ul>
-    )
-}
-export default Meals
+      <ul id="meals">
+        {mealsData.map((mealsData) => {
+          return <MealItem meal={mealsData} key={mealsData.id}></MealItem>;
+        })}
+      </ul>
+    );
+  }
+};
+
+export default Meals;
 
