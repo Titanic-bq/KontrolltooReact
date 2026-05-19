@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static('public'));
 
+const datafile = path.join (__dirname,"data","meals.json")
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
@@ -17,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/meals", async (req, res) => {
-  const meals = "[]" // data should be read from file
+ const meals = await fs.readFile(datafile,"utf-8");
   res.json(JSON.parse(meals));
 });
 
