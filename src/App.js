@@ -7,7 +7,6 @@ const App = () => {
     <>
     <Header></Header>
     <Meals></Meals>
-     <h1>Food Order App</h1>
     </>
   );
 }
